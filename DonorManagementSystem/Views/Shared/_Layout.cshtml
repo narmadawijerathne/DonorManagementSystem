@@ -36,6 +36,17 @@
     <style>
         #contentModel {
             /*padding-top: 220px;*/
+            vertical-align: central;          
+        }
+
+        .modal-content {
+            width: 600px !important;
+           padding-top:50px;
+            margin: 0px auto !important;
+        }
+
+        #myModal {
+            /*padding-top: 100px;*/
             vertical-align: central;
         }
     </style>
@@ -49,36 +60,46 @@
 
   
         @*<div class="container-fluid body-content" style="padding:0">*@
-            <div class="container body-content" style="padding:0">
+            <div class="container-fluid body-content" style="padding:0">
 
                 @RenderBody()
+
+
+                <div id="modal-container" class="modal fade"
+                     tabindex="-1" role="dialog">
+                    <div class="modal-content">
+                    </div>
+                </div>
+
+
+
                 <div class="row">
                     <div class="col-md-12" style="text-align:center; margin-top:30px;">
                         <div class="ui steps">
-                            <div class="active step">
+                            <div class="active step" id="step1">
                                 <i class="dollar icon"></i>
                                 <div class="content">
-                                    <div class="title">Donation Amount</div>
+                                    <div class="title">Donation</div>
                                     <div class="description">Choose your Amount</div>
                                 </div>
                             </div>
-                            <div class="disabled step">
+                            <div class="disabled step" id="step2">
                                 <i class="payment icon"></i>
                                 <div class="content">
-                                    <div class="title">Billing</div>
-                                    <div class="description">Enter billing information</div>
+                                    <div class="title">Payment</div>
+                                    <div class="description">Enter Payment information</div>
                                 </div>
                             </div>
-                            <div class="disabled step">
+                            <div class="disabled step" id="step3">
                                 <i class="info icon"></i>
                                 <div class="content">
-                                    <div class="title">Confirm Donation</div>
+                                    <div class="title">Confirmation</div>
                                 </div>
                             </div>
                         </div>
-                        <div style="float:right">
+                        @*<div style="float:right">
                             <button id="loginBtn" class="btn btn-primary btn-lg">Login</button>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
                
@@ -178,14 +199,33 @@
                                                 <input type="text" id="mytxtBox" class="form-control">
                                             </div>
                                             </div>*@
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label class="checkbox-inline">
+                                                            <input type="checkbox" value="">One time
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                            <input type="checkbox" value="">Monthly
+                                                        </label>
+                                                    </div>
+                                                </div>
+
                                                 <div class="row" style="padding-top:20px">
                                                     <div class="col-md-12">
                                                         @*<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Use Credit Card</button>
                                                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg"><i class="fa fa-paypal"></i> Use Pay Pal</button>*@
 
-                                                        <button id="donateButton" type="button" data-target="#myModal" class="btn btn-default"><h2 id="myh2" onclick="submitData()">Donate</h2></button>
+                                                        @*<button id="donateButton" type="button" data-target="#myModal" class="btn btn-default"><h2 id="myh2" onclick="submitData()">Donate</h2></button>*@
+
+                                                        @Html.ActionLink("Donate", "ViewLoginPanel", "Home", null, new { @class = "modal-link btn btn-success", id = "donateButton", onclick = "submitData()" })
+                                                     
+                                                       
+
+
                                                     </div>
                                                 </div>
+                                               
                                                 
                                             </div>
                                         </div>
@@ -209,23 +249,21 @@
 
                 <!-- Modal -->
                 <div id="myModal" class="modal fade" role="dialog" tabindex="1">
-                    <div class="modal-dialog" style="width:1000px">
+                    <div class="modal-dialog" >
 
                         <!-- Modal content-->
                         <div class="modal-content" >
-                            <div class="modal-header" style="background-color:steelblue">
+                            <div class="modal-header" >
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h2 style="color:white" class="modal-title">Sign In</h2>
-                                
                             </div>
                             <div class="modal-body">
-                                <div class="thumbnail" style="border:none !important">
+                                @*<div class="thumbnail" style="border:none !important">
                                     <img style="height:150px; width:150px;" src="~/Content/Image/verbum100x100.png" />
-                                </div>
-                                <div class="row">
+                                </div>*@
+                                @*<div class="row">
 
                                     <div class="col-md-6">
-                                       
+
 
                                         <div class="ui center aligned basic segment">
                                             <button class="ui facebook button">
@@ -239,24 +277,25 @@
                                             <div class="ui horizontal divider">
                                                 Or
                                             </div>
-                                            <div class="ui teal labeled icon button" data-toggle="modal" data-target="#registerModel" data-dismiss="modal" >
+                                               <button type="button" class="btn btn-primary">Log In</button><br />
+                                            <label style="font-size:12px">Forgot Password ?</label>
+                                        </blockquote>
+                                    </div>
+                                </div>           <div class="ui teal labeled icon button" data-toggle="modal" data-target="#registerModel" data-dismiss="modal">
                                                 Register
                                                 <i class="add icon"></i>
                                             </div>
-                                        </div>
+                                        </div>*@
+                                @Html.Partial("_NewSignUpPartial")
                                     </div>
 
-                                    <div class="col-md-6">
+                                    @*<div class="col-md-6">
                                         <blockquote>
                                             <label>Sign In</label>
                                             <input type="text" class="form-control" placeholder="UserName"> <br />
                                             <input type="password" class="form-control" placeholder="Password"><br />
-                                            <button type="button" class="btn btn-primary">Log In</button><br />
-                                            <label style="font-size:12px">Forgot Password ?</label>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                            </div>
+                              
+                            </div>*@
                             <div class="modal-footer">
                                 <nav aria-label="...">
                                     <ul class="pager">
@@ -273,214 +312,14 @@
 
 
                 <!-- Modal 2 payment -->
-                <div id="contentModel" class="modal fade" role="dialog" tabindex="2" style="margin-top:150px">
+                <div id="contentModel" class="modal fade" role="dialog" tabindex="2">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-body" style="background-color:transparent">
-                                
-                                <div class="container">
-                                    <div class="login-signup">
-                                        <div class="row">
-                                            <div class="col-sm-6 nav-tab-holder">
-                                                <ul class="nav nav-tabs row" role="tablist">
-                                                    <li role="presentation" class="active col-sm-6"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">CreditCard</a></li>
-                                                    <li role="presentation" class="col-sm-6"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">PayPal</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane active" id="home">
-                                                <div class="row">
-                                                    <div class="col-sm-6 mobile-pull">
-                                                        <article role="login">
-                                                            <h1 class="text-center"> <i class="fa fa-usd">@*<input type="text" id="donationAmount">*@<label style="font-size:larger" id="donationAmount"></label></i></h1>
-                                                            
-                                                            
-                                                            <form class="signup" action="index.html" method="post">
-                                                                <label>Card Details</label>
-                                                                <hr/>
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" placeholder="Name on Card">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="email" class="form-control" placeholder="Card Number">
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" placeholder="CVV">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" placeholder="Expiary">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <label>Billing Information</label>
-                                                                <hr/>
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <input type="email" class="form-control" placeholder="email">
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <label>Name</label>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" placeholder="First Name">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" placeholder="Last Name">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                
-                                                                <div class="form-group">
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox"> Please accept the terms and conditions to proceed with your request.
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="submit" class="btn btn-success btn-block" value="Confirm">
-                                                                </div>
-                                                            </form>
-                                                            <footer role="signup" class="text-center">
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href="#">Terms of Use</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">Privacy Statement</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </footer>
-                                                        </article>
-                                                    </div>
-                                                    @*<div class="col-sm-6">
-                                <article role="manufacturer" class="text-center">
-                                    <header>
-                                        ADMIN
-                                    </header>
-                                    <h1>FREE</h1>
-                                    <ul class="text-left">
-                                        <li><i class="fa fa-check"></i>  Unlimited  access</li>
-                                        <li><i class="fa fa-check"></i>  Create Project Lists</li>
-                                        <li><i class="fa fa-check"></i>  Create Project Lists</li>
-                                        <li><i class="fa fa-check"></i>  Share Files</li>
-                                        <li><i class="fa fa-check"></i>   Unlimited  access</li>
-                                        <li><i class="fa fa-check"></i>  Unlimited  access</li>
-                                    </ul>
-                                    <a href="#" class="btn btn-success">SignUp  For Admin</a>
-                                </article>
-                            </div>*@
-                                                </div>
-                                                <!-- end of row -->
-                                            </div>
-                                            <!-- end of home -->
-                                            <div role="tabpanel" class="tab-pane" id="profile">
-                                                <div class="row">
-                                                    <div class="col-sm-6 mobile-pull">
-                                                        <article role="login">
-                                                            <h1 class="text-center"> <i class="fa fa-usd">@*<input type="text" id="donationAmount">*@<label style="font-size:larger" id="donationAmount"></label></i></h1>
-
-
-                                                            <form class="signup" action="index.html" method="post">
-                                                               
-
-                                                                <label>Billing Information</label>
-                                                                <hr />
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <input type="email" class="form-control" placeholder="email">
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                                <label>Name</label>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" placeholder="First Name">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" placeholder="Last Name">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="form-group">
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox"> Please accept the terms and conditions to proceed with your request.
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="submit" class="btn btn-success btn-block" value="Confirm">
-                                                                </div>
-                                                            </form>
-                                                            <footer role="signup" class="text-center">
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href="#">Terms of Use</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">Privacy Statement</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </footer>
-                                                        </article>
-                                                    </div>
-                                                    @*<div class="col-sm-6">
-                                <article role="manufacturer" class="text-center">
-                                    <header>
-                                        USER
-                                    </header>
-                                    <h1>FREE</h1>
-                                    <ul class="text-left">
-                                        <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
-                                        <li><i class="fa fa-check"></i>   Unlimited Site Access</li>
-                                        <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
-                                        <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
-                                        <li><i class="fa fa-check"></i>   Unlimited Site Access</li>
-                                        <li><i class="fa fa-check"></i>   Unlimited Site Access</li>
-                                    </ul>
-                                    <a href="#" class="btn btn-success">SignUp  For User</a>
-                                </article>
-                            </div>*@
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-                                </div>
+                            <div class="modal-body">
+                                @Html.Partial("_MyPaymentPanel")
                             </div>
                         </div>
                     </div>
-                    
-                    
-                    
                 </div>
                 <!-- End Modal -->
 
@@ -581,11 +420,11 @@
     //    $("#panel4").hide();
     //    $("#panel5").hide();
     //    $("#defaultPanel").hide();
-        
+
     //}
 
     //function showPanel2() {
-        
+
     //    $("#panel1").hide();
     //    $("#panel2").show();
     //    $("#panel3").hide();
@@ -669,7 +508,7 @@
     //    btValue.push("250");
     //}
 
-    
+
 
     //function submitData() {
     //    console.log(btValue.length);
@@ -684,19 +523,104 @@
     //        $('#myModal').modal('show');
     //    }
     //}
+    //$(document).ready(function () {
+    //    $('#datePicker')
+    //        .datepicker({
+    //            format: 'mm/dd/yyyy'
+    //        })
+    //        .on('changeDate', function (e) {
+    //            // Revalidate the date field
+    //            $('#eventForm').formValidation('revalidateField', 'date');
+    //        });
 
-    
+    //    $('#eventForm').formValidation({
+    //        framework: 'bootstrap',
+    //        icon: {
+    //            valid: 'glyphicon glyphicon-ok',
+    //            invalid: 'glyphicon glyphicon-remove',
+    //            validating: 'glyphicon glyphicon-refresh'
+    //        },
+    //        fields: {
+    //            name: {
+    //                validators: {
+    //                    notEmpty: {
+    //                        message: 'The name is required'
+    //                    }
+    //                }
+    //            },
+    //            date: {
+    //                validators: {
+    //                    notEmpty: {
+    //                        message: 'The date is required'
+    //                    },
+    //                    date: {
+    //                        format: 'MM/DD/YYYY',
+    //                        message: 'The date is not a valid'
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    });
+    //});
+
 
    
 
-   
+        //$(document).ready(function () {
+
+        //    $('.btn-bootstrap-dialog').click(function () {
+        //        var url = $('#bootstrapDialog').data('url');
+
+        //        $.get(url, function (data) {
+        //            $('#bootstrapDialog').html(data);
+
+        //            $('#bootstrapDialog').modal('show');
+        //        });
+        //    });
+        //    });
+
+    $(function () {
+        // Initialize numeric spinner input boxes
+        //$(".numeric-spinner").spinedit();
+        // Initialize modal dialog
+        // attach modal-container bootstrap attributes to links with .modal-link class.
+        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+        $('body').on('click', '.modal-link', function (e) {
+
+         
+
+           
+                e.preventDefault();
+                $(this).attr('data-target', '#modal-container');
+                $(this).attr('data-toggle', 'modal');
+                        
+        });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click', '.modal-close-btn', function () {
+            $('#modal-container').modal('hide');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#modal-container').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        $('#CancelModal').on('click', function () {
+            return false;
+        });
+    });
+
+    //function submitData() {
+    //    console.log(btValue.length);
+    //    if (btValue.length == 0) {
+    //        //$('#myModal').modal('hide');
+    //        //$('#myModal').appendTo("body").modal('hide');
+    //        $("#errorMsg").show();
+    //    }
+
+    //    else {
+    //        //$('#myModal').modal('show');
+    //    }
+    //}
 
 
 
-
-
-
-
-
-
-</script>
+    </script>

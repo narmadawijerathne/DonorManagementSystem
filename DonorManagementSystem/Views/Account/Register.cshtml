@@ -1,81 +1,97 @@
 ﻿@model DonorManagementSystem.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+//ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
 
 
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModal-label">Bootstrap Dialog</h4>
+        </div>
+        <div class="modal-body">
+            
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Create a new account.</h4>
+                <hr />
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Firstname, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Lastname, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control" })
-        </div>
-    </div>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.ContactNo, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control" })
-        </div>
-    </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Firstname, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.DOB, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.DOB, new { @class = "form-control" })
-        </div>
-    </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Lastname, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control" })
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        @*<label>Email(Username)</label>*@
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ContactNo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DOB, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.DOB, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    @*<label>Email(Username)</label>*@
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Register" />
+                    </div>
+                </div>
+            }
+
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="btnOK" onclick="">OK</button>
+            <button class="btn btn-default" data-dismiss="modal" id="btnCancel">Cancel</button>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+</div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-@*<script>
-   
-        $(document).ready(function ()
-        {
-            $("#datetimepicker").datetimepicker();
-        });
-</script>*@

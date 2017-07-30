@@ -15,16 +15,43 @@ namespace DonorManagementSystem.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+      
+
+        public ActionResult ViewLoginPanel()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return PartialView("LoginPanel");
         }
+
+        [HttpPost]
+        public ActionResult LoginPanel()
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ViewPaymentPanel()
+        {
+            return PartialView("PaymentPanel");
+        }
+
+        [HttpPost]
+        public ActionResult PaymentPanel()
+        {
+            return RedirectToAction("LoginPanel");
+        }
+
+        public ActionResult ViewContact()
+        {
+            return PartialView("Contact");
+        }
+
+        //[HttpPost]
+        //public ActionResult Contact()
+        //{
+        //    return RedirectToAction("Index");
+            
+        //}
     }
 }

@@ -61,8 +61,9 @@
     //show button amount on textbox within modal
 
     $(document).on("click", "#bt1", function () {
-        var myBookId = $("#bt1").data('id');
+        var myBookId = $(this).data('id');
         $(".modal-body #donationAmount").text(myBookId);
+        console.log(myBookId);
     });
 
 
@@ -71,6 +72,8 @@
 
         var result = document.getElementById("btText").value;
         $(".modal-body #donationAmount").val(result);
+        console.log(result);
+
     }
 
     var btValue = [];
@@ -98,12 +101,12 @@
         if (btValue.length == 0)
         {
             //$('#myModal').modal('hide');
-            $('#myModal').appendTo("body").modal('hide');
+            //$('#myModal').appendTo("body").modal('hide');
             $("#errorMsg").show();
         }
 
         else {
-            $('#myModal').modal('show');
+            //$('#myModal').modal('show');
         }
     }
 
@@ -111,7 +114,10 @@ $(document).ready(function () {
     $("#btT").focusout(function () {
         $("#btText").val('');
         $("#mybutton").show();
-        $("#btT").hide(); 
+        $("#btT").hide();
     });
-    });
+});
+
+   
+
 

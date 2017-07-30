@@ -1,8 +1,8 @@
 ﻿body, html {
     /*padding-top: 50px;
     padding-bottom: 20px;*/
-
-
+    font-family:'Century Gothic';
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -36,16 +36,6 @@ textarea {
     max-width: 400px;
 }
 
-#myModal {
-    padding-top: 100px;
-    vertical-align: central;
-}
-
-
-
-
-
-
 
 
 #mybutton {
@@ -64,18 +54,9 @@ textarea {
     color: white;
 }
 
-
-
-
-
 button#bt1:focus {
     background: black;
 }
-
-
-
-
-
 #btText {
     height: 80px;
     max-width: 380px;
@@ -83,6 +64,11 @@ button#bt1:focus {
     background-color: dimgray;
     color: white;
     text-align:right;
+}
+
+.modal-body {
+     /*position: relative; 
+     padding: 15px;*/ 
 }
 
 
@@ -261,7 +247,8 @@ article[role="manufacturer"] {
             }
 
 .login-signup {
-    padding: 0 0 25px;
+    padding: 0 0 0px;
+    
 }
 
 @media only screen and (max-width: 767px) {
@@ -285,4 +272,15 @@ article[role="manufacturer"] {
     .nav-tabs > li {
         /*width: 50%;*/
     }
+
+    .modal-body {
+        padding: 0 0 0px;
+    }
 }
+
+.modal-body {
+    padding: 0 0 0px;
+}
+
+
+

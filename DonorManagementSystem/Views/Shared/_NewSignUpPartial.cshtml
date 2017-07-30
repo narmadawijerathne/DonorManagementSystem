@@ -1,14 +1,11 @@
 ﻿
-
-
-
 <div class="container">
     <div class="login-signup">
         <div class="row">
             <div class="col-sm-6 nav-tab-holder">
                 <ul class="nav nav-tabs row" role="tablist">
-                    <li role="presentation" class="active col-sm-6"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Admin</a></li>
-                    <li role="presentation" class="col-sm-6"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">User</a></li>
+                    <li role="presentation" class="active col-sm-6"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Sign In</a></li>
+                    <li role="presentation" class="col-sm-6"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -43,7 +40,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+
+
+
+
+
+                                    @*test button*@
                                     <input type="submit" class="btn btn-success btn-block" value="SUBMIT">
+                                    <div class="modal fade" id="bootstrapDialog" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true" data-url='@Url.Action("Register", "Account")'></div>
                                 </div>
                             </form>
                             <footer role="signup" class="text-center">
@@ -58,23 +62,7 @@
                             </footer>
                         </article>
                     </div>
-                    @*<div class="col-sm-6">
-                        <article role="manufacturer" class="text-center">
-                            <header>
-                                ADMIN
-                            </header>
-                            <h1>FREE</h1>
-                            <ul class="text-left">
-                                <li><i class="fa fa-check"></i>  Unlimited  access</li>
-                                <li><i class="fa fa-check"></i>  Create Project Lists</li>
-                                <li><i class="fa fa-check"></i>  Create Project Lists</li>
-                                <li><i class="fa fa-check"></i>  Share Files</li>
-                                <li><i class="fa fa-check"></i>   Unlimited  access</li>
-                                <li><i class="fa fa-check"></i>  Unlimited  access</li>
-                            </ul>
-                            <a href="#" class="btn btn-success">SignUp  For Admin</a>
-                        </article>
-                    </div>*@
+                   
                 </div>
                 <!-- end of row -->
             </div>
@@ -93,11 +81,22 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <label class="col-xs-3 control-label">Date</label>
+                                    <div class="col-xs-5 date">
+                                        <div class="input-group input-append date" id="datePicker">
+                                            <input type="text" class="form-control" name="date" />
+                                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password">
-                                </div>
+
+
+                               
+
+
+                                
+
+                               
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
@@ -121,24 +120,9 @@
                             </footer>
                         </article>
                     </div>
-                    <div class="col-sm-6">
-                        <article role="manufacturer" class="text-center">
-                            <header>
-                                USER
-                            </header>
-                            <h1>FREE</h1>
-                            <ul class="text-left">
-                                <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
-                                <li><i class="fa fa-check"></i>   Unlimited Site Access</li>
-                                <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
-                                <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
-                                <li><i class="fa fa-check"></i>   Unlimited Site Access</li>
-                                <li><i class="fa fa-check"></i>   Unlimited Site Access</li>
-                            </ul>
-                            <a href="#" class="btn btn-success">SignUp  For User</a>
-                        </article>
-                    </div>
+                   
                 </div>
             </div>
         </div>
     </div>
+</div>
